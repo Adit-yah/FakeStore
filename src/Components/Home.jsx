@@ -3,10 +3,11 @@
   import Products from './Products'
   import { productContext } from '../Utils/Context'
   import { Link, useLocation } from 'react-router-dom'
+  import {  RiAddFill,  RiMenu3Fill } from "@remixicon/react";
 
 
   const Home = () => {
-    const {products} = useContext(productContext)
+    const {products , isOpen , setIsOpen} = useContext(productContext)
 
     //// useLocation() returns the current URL info; search is the query string part (e.g. "?key=value")
     const {search} = useLocation()
@@ -33,17 +34,24 @@
     
    
     return (
-    <div  className='md:flex  relative w-screen h-screen  overflow-x-hidden '>
-
-    <Menu/>
+    <div  className=' md:flex  relative w-screen h-screen  overflow-x-hidden '>
+          <div 
+      className="md:hidden w-full  bg-white h-[50px] flex justify-between items-center px-5 py-3">
+        <h1 className="text-xl">FakeStore</h1>
+        <RiMenu3Fill
+         onClick={()=>setIsOpen(!isOpen)}
+        
+         className="RIMenu"/>
+      </div>
     <div className=' w-full h-[calc(100vh-50px)] md:w-[85%] md:h-screen relative overflow-y-scroll [&::-webkit-scrollbar]:hidden p-3' >
     <div className='p-2 '>
-    { searchCategory &&  <Link to='/' className="border-[1.5px]  border-red-300 hover:border-red-500 hover:text-red-500  active:scale-94 px-3 self-center py-1 whitespace-nowrap rounded-[3px] font-medium text-red-300 text-sm"> Home  </Link>  }
+    { searchCategory &&  <Link to='/FakeStore' className="border-[1.5px]  border-red-300 hover:border-red-500 hover:text-red-500  active:scale-94 px-3 self-center py-1 whitespace-nowrap rounded-[3px] font-medium text-red-300 text-sm"> Home  </Link>  }
     </div>
     <div className='grid grid-cols-3 sm:grid-cols-4 gap-1 '>
        { renderFilterproducts}
     </div>
     </div>
+    <Menu/>
     </div>
     )
   }

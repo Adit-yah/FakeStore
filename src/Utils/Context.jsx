@@ -9,7 +9,7 @@ const Context = ({ children }) => {
   const [products, setProducts] = useState(JSON.parse(localStorage.getItem('products')) ?? null);
   const [loading, setloading] = useState(true);
   const [error, seterror] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false)
 
   async function getProducts() {
     try {
@@ -33,7 +33,7 @@ const Context = ({ children }) => {
   } , [products])
 
   return (
-    <productContext.Provider value={{products , setProducts}}>
+    <productContext.Provider value={{products , setProducts , isOpen , setIsOpen}}>
       {loading ? <Loading /> : error ? <Failed /> : children}
     </productContext.Provider>
   );

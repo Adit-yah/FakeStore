@@ -176,7 +176,7 @@ const AddProducts = () => {
               className="border-[1.5px] mb-2 border-red-300 active:scale-94 hover:text-red-500 hover:border-red-500 px-3 self-center py-2 whitespace-nowrap rounded-[10px] font-medium text-red-300 text-sm"
               onClick={()=>{
                 setisCancel(true)
-                nevigate('/')}}
+                nevigate(-1)}}
             >
               Cancel
             </button>

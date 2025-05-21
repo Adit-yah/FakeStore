@@ -2,6 +2,7 @@ import React, { useContext, } from "react";
 import { Link } from "react-router-dom";
 import { productContext } from "../Utils/Context";
 
+
 const CategoryFilter = () => {
   const {products} = useContext(productContext);
   function color() {
@@ -27,7 +28,7 @@ const CategoryFilter = () => {
         {uniqueCategories.map((category, idx) => (
           <Link
             key={idx}
-            to={`/?category=${category}`}
+            to={`/FakeStore/?category=${category}`}
             className="flex focus:scale-105 text-gray-500 focus:text-gray-800 focus:font-medium  group active:scale-100 hover:scale-105 capitalize items-center gap-2.5"
           >
             <span
