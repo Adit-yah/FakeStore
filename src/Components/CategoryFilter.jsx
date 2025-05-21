@@ -1,18 +1,16 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, } from "react";
 import { Link } from "react-router-dom";
 import { productContext } from "../Utils/Context";
 
 const CategoryFilter = () => {
   const {products} = useContext(productContext);
-
   function color() {
     return `rgb(
      ${Math.floor(Math.random() * 256)},
      ${Math.floor(Math.random() * 256)},
      ${Math.floor(Math.random() * 256)}
      )`
-  }
-
+  } 
  
   const categories = (products ?? []).map((product) => product.category);
   //If products is null or undefined, use [] instead.
@@ -44,4 +42,4 @@ const CategoryFilter = () => {
   );
 };
 
-export default CategoryFilter;
+export default React.memo(CategoryFilter); 

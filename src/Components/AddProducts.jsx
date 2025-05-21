@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { productContext } from "../Utils/Context";
 import { toast } from "react-toastify";
 
@@ -12,17 +12,23 @@ const AddProducts = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [newProduct, setnewProduct] = useState(null);
-  
+
+  const [dropDown, setDropDown] = useState(false)
+  const [isCancel, setisCancel] = useState(false)
+  const categories = (products ?? []).map((product) => product.category);
+  //If products is null or undefined, use [] instead.
+  //Otherwise, use the actual value of products.
+  const uniqueCategories = [...new Set(categories)];
   
   function formHandler (e){
    e.preventDefault()
-   if( 
+    if( 
     title.trim().length < 5 ||
     description.trim().length < 5 ||
     category.trim().length < 5 
-   ) alert('Each field  atlesat have four character')
+   ) !isCancel &&  alert(' Some fields required  atleast  Five character')
    else{
-     setnewProduct({
+    !isCancel &&  setnewProduct({
        id : Date.now() ,
        title,
        price,
@@ -30,7 +36,7 @@ const AddProducts = () => {
        category,
        image,
      });
-     setCategory("");
+    !isCancel &&  setCategory("");
      setTitle("");
      setImage("");
      setPrice("");
@@ -51,7 +57,7 @@ const AddProducts = () => {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-gray-100">
-      <div className="w-[40%] h-50%] bg-white p-8 rounded-lg shadow-md">
+      <div className=" w-full mx-4 md:mx-0 md:w-[50vw]  bg-white p-8 rounded-lg shadow-md">
         {/* Title of the form (Add Product) */}
         <div className="text-2xl font-semibold mb-6 text-gray-800">
           Add New Product
@@ -63,11 +69,17 @@ const AddProducts = () => {
         className="w-full gap-4"
         >
           {/* Category and Title */}
-          <div className="flex gap-4 mb-4">
+          <div className="md:flex md:gap-4 md:mb-4">
             {/* Category */}
-            <div className="w-[48%] ">
+            <div className="md:w-[48%] md:mb-0 mb-4  relative ">
               <input
+                autoComplete="off"
+                onFocus={()=>setDropDown(true)}
+                onBlur={()=>{ 
+                  setDropDown && setTimeout(()=>{  
+                  setDropDown(false)} , 100)}}
                 onChange={(e) => setCategory(e.target.value.toLowerCase())}
+                
                 id="category"
                 type="text"
                 name="category"
@@ -76,10 +88,24 @@ const AddProducts = () => {
                 placeholder="Category"
                 className="w-full capitalize border rounded-lg px-3 py-2 text-gray-700 outline-none focus:ring-2 focus:ring-blue-400"
               />
-            </div>
+              { uniqueCategories?.length != 0 && dropDown &&
+              <div  
+                className="  border  w-full rounded absolute mt-[5px] p-2 bg-white ">
+                <div className="h-3  aspect-square z-1 left-1/2   absolute top-0 -translate-x-1/2 -translate-y-[7px] bg-white  border-l border-t rotate-45 "></div>
+                <ul
+                className="overflow-y-scroll h-25 w-full  [&::-webkit-scrollbar]:hidden   "> 
+                  {uniqueCategories?.map((c , idx)=>(
+                    <li 
+                    onMouseDown={()=>(setCategory(c))}
+                    key={idx}
+                    className="capitalize hover:text-gray-700 whitespace-nowrap text-gray-500 cursor-pointer text-md ">{c}</li>
+                    ))}
+                </ul>
+              </div>}
+            </div> 
 
             {/* Title */}
-            <div className="w-[48%]">
+            <div className="md:w-[48%] md:mb-0 mb-4">
               <input
                 onChange={(e) => setTitle(e.target.value)}
                 id="title"
@@ -94,9 +120,9 @@ const AddProducts = () => {
           </div>
 
           {/* Image URL and Price */}
-          <div className="flex gap-4 mb-4">
+          <div className="md:flex md:gap-4 md:mb-4">
             {/* Image URL */}
-            <div className="w-[48%]">
+            <div className="md:w-[48%] md:mb-0 mb-4">
               <input
                 onChange={(e) => setImage(e.target.value)}
                 id="image"
@@ -110,7 +136,7 @@ const AddProducts = () => {
             </div>
 
             {/* Price */}
-            <div className="w-[48%]">
+            <div className="md:w-[48%]  md:mb-0 mb-4">
               <input
                 onChange={(e) => setPrice(e.target.value)}
                 id="price"
@@ -148,7 +174,9 @@ const AddProducts = () => {
             </button>
             <button
               className="border-[1.5px] mb-2 border-red-300 active:scale-94 hover:text-red-500 hover:border-red-500 px-3 self-center py-2 whitespace-nowrap rounded-[10px] font-medium text-red-300 text-sm"
-              onClick={()=>{nevigate('/')}}
+              onClick={()=>{
+                setisCancel(true)
+                nevigate('/')}}
             >
               Cancel
             </button>

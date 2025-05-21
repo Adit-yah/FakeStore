@@ -58,21 +58,21 @@ const editedProduct = () => {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-gray-100">
-      <div className="w-[40%] h-50%] bg-white p-8 rounded-lg shadow-md">
+      <div className=" w-full mx-4 md:mx-0 md:w-[50vw] bg-white p-5 rounded-lg shadow-md">
         {/* Title of the form (Edit Product) */}
         <div className="text-2xl font-semibold mb-6 text-gray-800">
-          Edit Product
+          Edit Product 
         </div>
 
         {/* Product Form */}
         <form 
         onSubmit={(e) =>{ formHandler(e)}}
-        className="w-full gap-4"
+        className="w-full  gap-4"
         >
           {/* Category and Title */}
-          <div className="flex gap-4 mb-4">
+          <div className="md:flex md:gap-4  mb-4">
             {/* Category */}
-            <div className="w-[48%] ">
+            <div className="md:w-[48%] mb-4 md:mb-0  ">
               <input
                 onChange={(e) => changeHandler(e)}
                 id="category"
@@ -86,7 +86,7 @@ const editedProduct = () => {
             </div>
 
             {/* Title */}
-            <div className="w-[48%]">
+            <div className="md:w-[48%] mb-4 md:mb-0">
               <input
                 onChange={(e) => changeHandler(e)}
                 id="title"
@@ -101,9 +101,9 @@ const editedProduct = () => {
           </div>
 
           {/* Image URL and Price */}
-          <div className="flex gap-4 mb-4">
+          <div className="md:flex md:gap-4 md:mb-4">
             {/* Image URL */}
-            <div className="w-[48%]">
+            <div className="md:w-[48%] md:mb-0 mb-4">
               <input
                 onChange={(e) => changeHandler(e)}
                 id="image"
@@ -117,7 +117,7 @@ const editedProduct = () => {
             </div>
 
             {/* Price */}
-            <div className="w-[48%]">
+            <div className="md:w-[48%] md:mb-0 mb-4">
               <input
                 onChange={(e) => changeHandler(e)}
                 id="price"
@@ -141,7 +141,7 @@ const editedProduct = () => {
               required
               placeholder="Description"
               rows={4}
-              className="w-full border rounded-lg px-3 py-2 text-gray-700 outline-none resize-none focus:ring-2 focus:ring-blue-400"
+              className="w-full border overflow-y-scroll [&::-webkit-scrollbar]:hidden rounded-lg px-3 py-2 text-gray-700 outline-none resize-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 

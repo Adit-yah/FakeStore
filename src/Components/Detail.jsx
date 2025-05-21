@@ -24,13 +24,13 @@ const Detail = () => {
   return (
     product
     ?
-     <div className=' detailCardContainer w-screen relative h-screen flex  items-center justify-center'>
-      <div className='detailCard relative h-[65%] w-[65%]  p-10 gap-10 flex items-center '>
+     <div className=' detailCardContainer w-full relative h-screen flex  items-center justify-center '>
+      <div className='detailCard relative w-full  max-w-4xl md:flex   md:items-center  m-10 md:gap-10  '>
         <div  onClick={()=>navigate(-1)} className='absolute right-0  top-0 cursor-pointer hover:text-gray-600  text-gray-500  active:scale-95  '><RiArrowGoBackLine/></div>
-        <img className='w-[35%]  h-[85%] object-contain ' src={product.image} alt="" />
-       <div className="details w-[75%]  flex flex-col gap-2.5  ">
-          <h6 className='capitalize text-md hover:text-gray-500 text-gray-400 '>{product.category}</h6>
-           <h1 className=' text-2xl '>{product.title}</h1>
+        <img className='w-full max-w-[250px] m-auto object-contain ' src={product.image} alt="" />
+       <div className="details w-full  flex flex-col gap-2.5  ">
+          <h6 className='capitalize text-md  hover:text-gray-500 text-gray-400 sm:text-lg '>{product.category}</h6>
+           <h1 className=' text-lg sm:text-xl '>{product.title}</h1>
             <h3 className='text-red-500'>${product.price}</h3>
              <h4 className='leading-[1.3]  text-sm'>{product.description}</h4>
        <div className="buttons flex gap-2.5 mt-2 ">
@@ -45,10 +45,10 @@ const Detail = () => {
         </div>
       </div>
       {/* confirmation for deletion of particular product */}
-      {isDelete &&  <div className="conformation h-full w-full flex  justify-center absolute  bg-white/60  backdrop-blur-[1px] items-center">
-       <div className='h-[30%] w-[30%] relative text-center  p-12 bg-white/60 backdrop-blur-sm shadow-sm shadow-gray-500 rounded-xl'>
+      {isDelete &&  <div className="conformation h-full w-full flex   justify-center absolute  bg-white/60  backdrop-blur-[1px] items-center">
+       <div className='  relative  flex flex-col items-center justify-center  p-10 bg-white/60 backdrop-blur-sm shadow-sm shadow-gray-500 rounded-xl'>
           <div>
-               <h1 className='text-gray-600 text-2xl whitespace-nowrap '>Are you sure want to delete</h1>
+               <h1 className='text-gray-600 whitespace-nowrap text-[2.9vmin] '>Are you sure want to delete</h1>
                <div className='flex gap-2 mt-3 justify-center'>
                <button 
                onClick={()=>{

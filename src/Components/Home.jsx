@@ -33,15 +33,16 @@
     
    
     return (
-    <div  className='flex'>
+    <div  className='md:flex  relative w-screen h-screen  overflow-x-hidden '>
 
     <Menu/>
-
-    <div className='w-[85%] h-screen  relative overflow-y-scroll [&::-webkit-scrollbar]:hidden p-3' >
+    <div className=' w-full h-[calc(100vh-50px)] md:w-[85%] md:h-screen relative overflow-y-scroll [&::-webkit-scrollbar]:hidden p-3' >
     <div className='p-2 '>
     { searchCategory &&  <Link to='/' className="border-[1.5px]  border-red-300 hover:border-red-500 hover:text-red-500  active:scale-94 px-3 self-center py-1 whitespace-nowrap rounded-[3px] font-medium text-red-300 text-sm"> Home  </Link>  }
     </div>
-    { renderFilterproducts}
+    <div className='grid grid-cols-3 sm:grid-cols-4 gap-1 '>
+       { renderFilterproducts}
+    </div>
     </div>
     </div>
     )
