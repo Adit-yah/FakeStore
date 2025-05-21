@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {  useLocation, useNavigate } from 'react-router-dom';
 import { productContext } from '../Utils/Context';
 import { toast } from 'react-toastify';
