@@ -9,7 +9,7 @@ import Context from "./Utils/Context.jsx";
 createRoot(document.getElementById("root")).render(
  
     <Context>
-      <BrowserRouter>
+      <BrowserRouter basename="/FakeStore">
         <App />
         <ToastContainer/>
       </BrowserRouter>

@@ -25,7 +25,7 @@ const CategoryFilter = () => {
         return uniqueCategories.map((category, idx) => (
           <Link
             key={idx}
-            to={`/FakeStore/?category=${category}`}
+            to={`/?category=${category}`}
             className={`flex  text-gray-500 ${ (category == searchCategory) && 'scale-105 font-medium text-gray-800' } active:scale-100  hover:scale-105 capitalize items-center gap-2.5`}
           >
             <span

@@ -6,10 +6,22 @@ import { productContext } from "../Utils/Context";
 
 const Menu = () => {
   const { isOpen , setIsOpen} = useContext(productContext)
+  const menuRef = useRef(null)
 
+  useEffect(()=>{
+    function toggleControl (event){
+       ( menuRef.current) && (!menuRef.current.contains(event.target)) && setIsOpen(!isOpen)
+     
+    }
+    document.addEventListener('mousedown' , (e)=>{ isOpen && toggleControl(e)})
+
+    return () => {document.removeEventListener('mousedownm' , toggleControl)}
+  } , [])
 
   return (
-    <nav  className=" " >
+    <nav
+    ref={menuRef}
+    >
     <div
      className={` 
      transform transition-transform  duration-300 ease-in-out 
@@ -25,7 +37,7 @@ const Menu = () => {
       </div>
       <Link
         className="border-[1.5px] mb-2 border-blue-300 active:scale-94 hover:text-blue-500 hover:border-blue-500 px-3 self-center py-2 whitespace-nowrap rounded-[10px] font-medium text-blue-300 text-sm"
-        to="/FakeStore/addProducts"
+        to="/addProducts"
       >
         Add New Product
       </Link>

@@ -36,7 +36,7 @@ const Detail = () => {
              <h4 className='leading-[1.3]  text-sm'>{product.description}</h4>
        <div className="buttons flex gap-2.5 mt-2 ">
         <button 
-        onClick={()=>{navigate(`/FakeStore/editProduct/${product.id}`)}} 
+        onClick={()=>{navigate(`/editProduct/${product.id}`)}} 
         className="border-[1.5px] cursor-pointer border-blue-300 hover:border-blue-500 hover:text-blue-500   active:scale-94 px-3 self-center py-1 whitespace-nowrap rounded-[3px] font-medium text-blue-300 text-sm"> Edit</button>
         <button 
          onClick={(e)=>{setIsDelete(true)}
@@ -70,7 +70,7 @@ const Detail = () => {
     <div className='w-full h-screen flex items-center justify-center '>
       <div className='text-center'>
       <h1 className='text-4xl'>Product Not Found</h1>
-      <Link to='/FakeStore' className='text-blue-600 text-xl block mt-2 hover:underline active:scale-95'>Home page</Link>
+      <Link to='/' className='text-blue-600 text-xl block mt-2 hover:underline active:scale-95'>Home page</Link>
       </div>
     </div>
  
